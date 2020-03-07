@@ -22,16 +22,21 @@ def start_text(message):
         bot.send_message(message.chat.id, answer)
         # answer+=w.get_weather_icon_url()
         i = 'дощ';n= 'злива';j='сонце';l='чисте небо';k='хмарно';m='похмуро'
-        if i or n in w.get_detailed_status():
+        if i  in w.get_detailed_status():
             bot.send_photo(message.chat.id,open('D:\ПогодаБот\p2.png' ,'rb'))
-        if k in w.get_detailed_status():
-            bot.send_photo(message.chat.id, open('D:\ПогодаБот\p3.png','rb'))
+        if n in w.get_detailed_status():
+            bot.send_photo(message.chat.id,open('D:\ПогодаБот\p2.png' ,'rb'))
         if j in w.get_detailed_status():
+            bot.send_photo(message.chat.id,open('D:\ПогодаБот\p4.png' ,'rb'))
+        if l in w.get_detailed_status():
             bot.send_photo(message.chat.id,open('D:\ПогодаБот\p4.png' ,'rb'))
         if m in w.get_detailed_status():
             bot.send_photo(message.chat.id,open('D:\ПогодаБот\p5.png' ,'rb'))
+        if k in w.get_detailed_status():
+            bot.send_photo(message.chat.id, open('D:\ПогодаБот\p5.png','rb'))
+
     except pyowm.exceptions.api_response_error.NotFoundError:
-      bot.send_message(message.chat.id, 'Місто не знайдено.')
+      bot.send_message(message.chat.id, 'Місто не знайдено. Спробуйте ще раз.')
 
 if __name__ == '__main__':
     bot.polling(none_stop = True)
